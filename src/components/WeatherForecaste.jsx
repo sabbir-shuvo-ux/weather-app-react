@@ -1,8 +1,12 @@
 import React from "react";
-import { testIcon } from "../assets/index";
 import SliderButton from "./SliderButton";
+import { useStateContext } from "../context/StateContext";
+import Card from "./Card";
+import ErrorBox from "./ErrorBox";
 
 const WeatherForecaste = () => {
+  const { foreCasteData } = useStateContext();
+
   return (
     <div>
       <div className="pl-8">
@@ -11,51 +15,21 @@ const WeatherForecaste = () => {
         </h1>
       </div>
       <div className="title_divider"></div>
-      <div className="relative group mt-8 mb-4">
-        {/* sldier button components  */}
-        <SliderButton sliderId="slider" />
-        <div
-          id="slider"
-          className="p-4 pt-0 overflow-x-scroll overflow-y-hidden flex gap-[1rem] scrollbar-hide scroll-smooth"
-        >
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
-          </div>
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
-          </div>
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
-          </div>
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
-          </div>
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
-          </div>
-          <div className="card">
-            <h2 className="text-white uppercase">sunday</h2>
-            <img className="mx-auto w-[50px]" src={testIcon} alt="test img" />
-            <h3 className="text-white uppercase">Broken clouds</h3>
-            <h4 className="text-white uppercase text-[1.25rem]">20°</h4>
+      {foreCasteData?.data?.length > 0 ? (
+        <div className="relative group mt-8 mb-4">
+          {/* sldier button components  */}
+          <SliderButton sliderId="slider" />
+          <div
+            id="slider"
+            className="p-4 pt-0 overflow-x-scroll overflow-y-hidden flex gap-[1rem] scrollbar-hide scroll-smooth"
+          >
+            {/* Weather forcaste card components */}
+            <Card />
           </div>
         </div>
-      </div>
+      ) : (
+        <ErrorBox text="Please search by any city or country name" />
+      )}
     </div>
   );
 };
