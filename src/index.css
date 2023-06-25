@@ -11,8 +11,7 @@ body {
 }
 
 .mainBgImg {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("/src/assets/mainBg.png");
+  border: 1px solid white;
 }
 
 .title_divider {
@@ -29,15 +28,13 @@ body {
 }
 
 .card {
-  border-radius: 20px;
   border: 1px solid #8d8d8d;
   background: rgba(217, 217, 217, 0.08);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  min-width: 7rem;
-  text-align: center;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+}
+@media (max-width: 426px) {
+  .responsive {
+    width: 95%;
+  }
 }
