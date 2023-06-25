@@ -1,8 +1,8 @@
 import React from "react";
-import { mainBg } from "./assets/index";
 import CurrentWeather from "./components/CurrentWeather";
 import WeatherForecaste from "./components/WeatherForecaste";
 import SearchBox from "./components/SearchBox";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -12,6 +12,8 @@ const App = () => {
         <CurrentWeather />
         <WeatherForecaste />
       </div>
+
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
