@@ -24,7 +24,9 @@ const WeatherForecaste = () => {
             className="p-4 pt-0 overflow-x-scroll overflow-y-hidden flex gap-[1rem] scrollbar-hide scroll-smooth"
           >
             {/* Weather forcaste card components */}
-            <Card />
+            {foreCasteData?.data?.map((item, index) => (
+              <Card key={index} item={item} />
+            ))}
           </div>
         </div>
       ) : (
