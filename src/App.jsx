@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <div className="mainBg flex justify-center items-center relative min-h-screen">
-      <div className="w-[430px] absolute mainBgImg h-[calc(100vh-1rem)] rounded-2xl flex justify-between flex-col overflow-hidden">
+      <div className="responsive w-[430px] absolute mainBgImg h-[calc(100vh-1rem)] rounded-2xl flex justify-between flex-col overflow-hidden">
         <SearchBox />
         <CurrentWeather />
         <WeatherForecaste />

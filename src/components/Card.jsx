@@ -6,7 +6,7 @@ const Card = ({ item }) => {
   const dayName = moment(itemDate).format("dddd");
 
   return (
-    <div className="card cursor-pointer">
+    <div className="rounded-[20px] min-w-[10rem] text-center p-[1rem] flex flex-col gap-[0.5rem] card cursor-pointer">
       <h2 className="text-white uppercase text-[14px]">
         {" "}
         {item?.valid_date ? dayName : null}{" "}

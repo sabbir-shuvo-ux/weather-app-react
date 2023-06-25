@@ -5,18 +5,30 @@ import toast from "react-hot-toast";
 
 const SearchBox = () => {
   const [inputValue, setInputValue] = useState("");
-  const { setForeCasteData } = useStateContext();
+  const { setForeCasteData, setCurrentWeather, setLoader } = useStateContext();
 
   // getting api data
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inputValue) {
-      return toast.error("This didn't work.", { duration: 2000 });
+      return toast.error("Please input city/country name.", { duration: 2000 });
     }
 
-    const data = await fetchApi(inputValue);
-    if (data) setForeCasteData(data);
+    setLoader(true);
+
+    // api endpoints
+    const forecasteUrl = "https://api.weatherbit.io/v2.0/forecast/daily";
+    const currentUrl =
+      "https://api.weatherbit.io/v2.0/current?include=minutely";
+
+    const currentData = await fetchApi(currentUrl, inputValue);
+    const forecastData = await fetchApi(forecasteUrl, inputValue);
+
+    if (currentData) setCurrentWeather(currentData);
+    if (forecastData) setForeCasteData(forecastData);
+
     setInputValue("");
+    setLoader(false);
   };
 
   return (
